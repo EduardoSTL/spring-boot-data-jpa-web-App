@@ -1,6 +1,11 @@
 package com.example.springbootdatajpa.app.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 @Entity
@@ -11,13 +16,19 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private static final long serialVersionUID = 1L;
-
+    @NotEmpty
     private String nombre;
+    @NotEmpty
     private String apellido;
+    @Email
+    @NotEmpty
     private String email;
+
+    @NotNull
     @Column(name = "create_at")
     //Usar en formato fecha:
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createAt;
 
     //Const vacio
