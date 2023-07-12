@@ -1,17 +1,10 @@
 package com.example.springbootdatajpa.app.models.dao;
 
-import com.example.springbootdatajpa.app.entity.Cliente;
-import org.springframework.transaction.annotation.Transactional;
+import com.example.springbootdatajpa.app.models.entity.Cliente;
 
-import java.util.List;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface IClienteDao {
+public interface IClienteDao extends CrudRepository<Cliente, Long> {
 
-    List<Cliente> findAll();
-
-    void save(Cliente cliente);
-
-    Cliente findOne(Long id);
-
-    void delete(Long id);
 }

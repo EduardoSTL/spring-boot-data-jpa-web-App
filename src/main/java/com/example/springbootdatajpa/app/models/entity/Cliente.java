@@ -1,4 +1,4 @@
-package com.example.springbootdatajpa.app.entity;
+package com.example.springbootdatajpa.app.models.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -6,11 +6,12 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "clientes")
-public class Cliente {
+public class Cliente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -74,5 +75,9 @@ public class Cliente {
 
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 }
